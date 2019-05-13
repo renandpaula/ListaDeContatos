@@ -23,11 +23,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                    + " (id INTEGER PRIMARY KEY AUTOINCREMENT, "
                     + " nome VARCHAR(30) NOT NULL, "
                      + " telefone VARCHAR(20) NOT NULL, "
-                      + " email VARCHAR(50) NOT NULL, "
-                        + " endereco VARCHAR(50) NOT NULL, "
-                         + " cidade VARCHAR(20) NOT NULL, "
-                          + " uf VARCHAR(2) NOT NULL, "
-                            + " cep VARCHAR(9) NOT NULL ); ";
+                      + " email VARCHAR(50), "
+                        + " endereco VARCHAR(50), "
+                         + " cidade VARCHAR(20), "
+                          + " uf VARCHAR(2), "
+                            + " cep VARCHAR(9), "
+                             + "position INTEGER ); ";
 
         try {
 

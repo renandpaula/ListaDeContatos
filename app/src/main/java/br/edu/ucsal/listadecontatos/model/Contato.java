@@ -12,8 +12,17 @@ public class Contato implements Serializable {
     private String cidade;
     private String uf;
     private String cep;
+    private int position;
 
     public Contato() {
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
     }
 
     public Long getId() {
@@ -79,4 +88,6 @@ public class Contato implements Serializable {
     public void setCep(String cep) {
         this.cep = cep;
     }
+
+
 }

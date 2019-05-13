@@ -52,9 +52,6 @@ public class AddContatoActivity extends AppCompatActivity {
 
         if (item.getItemId() == R.id.contatoSalvar) {
 
-            //Salva o contato no banco
-            ContatoDAO contatoDAO = new ContatoDAO(getApplicationContext());
-
             String nome = editContatoNome.getText().toString();
             String telefone = editContatoTelefone.getText().toString();
             String email = editContatoEmail.getText().toString();
@@ -62,18 +59,41 @@ public class AddContatoActivity extends AppCompatActivity {
             String cidade = editContatoCidade.getText().toString();
             String cep = editContatoCEP.getText().toString();
             String uf = spinnerContatoUF.getSelectedItem().toString();
-            Contato contato = new Contato();
-            contato.setNome(nome);
-            contato.setTelefone(telefone);
-            contato.setEmail(email);
-            contato.setEndereco(endereco);
-            contato.setCidade(cidade);
-            contato.setCep(cep);
-            contato.setUf(uf);
-            contatoDAO.salvar(contato);
-            Toast.makeText(AddContatoActivity.this, "Contato Salvo",
+            int position = spinnerContatoUF.getSelectedItemPosition();
+
+            //verifica se ao menos o nome e o telefone estao preenchidos
+            if (!nome.isEmpty()) {
+                if(!telefone.isEmpty()){
+                    //Salva o contato no banco
+                    ContatoDAO contatoDAO = new ContatoDAO(getApplicationContext());
+
+                    Contato contato = new Contato();
+                    contato.setNome(nome);
+                    contato.setTelefone(telefone);
+                    contato.setEmail(email);
+                    contato.setEndereco(endereco);
+                    contato.setCidade(cidade);
+                    contato.setCep(cep);
+                    contato.setUf(uf);
+                    contato.setPosition(position);
+                    if (contatoDAO.salvar(contato)) {
+                        finish();
+                        Toast.makeText(AddContatoActivity.this, "Contato salvo com sucesso",
                                 Toast.LENGTH_SHORT).show();
-            finish();
+                    } else {
+                        Toast.makeText(AddContatoActivity.this, "Erro ao salvar contato",
+                                Toast.LENGTH_SHORT).show();
+                    }
+
+
+                }else {
+                    Toast.makeText(AddContatoActivity.this, "Preencha ao menos o nome e telefone do contato.",
+                            Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                Toast.makeText(AddContatoActivity.this, "Preencha ao menos o nome e telefone do contato.",
+                        Toast.LENGTH_SHORT).show();
+            }
         }
         return super.onOptionsItemSelected(item);
     }
