@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/contatoEditar"
+        android:title="@string/titulo_menu_editar"
+        android:icon="@drawable/ic_menu_editar_branco"
+        android:orderInCategory="100"
+        app:showAsAction="always"
+        />
+
+    <item
+        android:id="@+id/contatoExcluir"
+        android:title="@string/titulo_menu_excluir"
+        android:icon="@drawable/ic_menu_delete_branco"
+        android:orderInCategory="200"
+        app:showAsAction="always"
+        />
+
+</menu>
